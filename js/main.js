@@ -21,7 +21,7 @@
         paddingTop: '0',
         paddingBottom: '0',
         verticalCentered: true,
-        showActiveTooltip: true,
+        showActiveTooltip: false,
         navigationTooltips: ['HOME', 'OUR STORY', 'DAYS LEFT', 'GALLERY', 'THE WEDDING', 'RECEPTION', 'CREDITS'],
         sectionsColor: ['#ffffff']
     });
