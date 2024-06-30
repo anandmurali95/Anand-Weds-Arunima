@@ -16,7 +16,7 @@
         scrollingSpeed: 500,
         autoScrolling: true,
         fitToSection: true,
-        navigation: true,
+        navigation: false,
         navigationPosition: 'left',
         paddingTop: '0',
         paddingBottom: '0',
