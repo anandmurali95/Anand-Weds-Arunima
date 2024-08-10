@@ -702,11 +702,46 @@ h6 {
     margin: 5px;
     width: calc(100% - 10px);
     border-radius: 150px;
-    box-shadow: 0 0 0 0px #fff inset, 0 0 5px 0 rgba(000, 000, 000, 0.5);
+    box-shadow: 0 0 0 0px #fff inset, 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Video Gallery Item */
+#gallery .gallery video {
+    margin: 5px;
+    width: 100%;
+    height: auto;
+    max-height: 360px; /* Ensures video fits within the same height as other elements */
+    border-radius: 20px;
+    box-shadow: 0 0 0 0px #fff inset, 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    object-fit: cover; /* Ensures the video fits the box shape without scaling */
+    object-position: center; /* Centers the video within the container */
+}
+
+.video-gallery-item {
+    position: relative;
+}
+
+#gallery-video {
+    width: 100%;
+    height: 360px; /* Sets the height to the container's height */
+    object-fit: cover; /* Ensures the video fits the box shape without scaling */
+    object-position: center; /* Centers the video within the container */
+}
+
+#fullscreen-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
 #gallery .gallery-nav img {
-    width: 100%;
+    width: 100px;
+    height: auto;
     border-radius: 30px;
 }
 
@@ -715,11 +750,15 @@ h6 {
 }
 
 #gallery .gallery-nav .slick-center img {
-    box-shadow: 0 0 0 0px #fff inset, 0 0 5px 0 rgba(000, 000, 000, 0.5);
-    -ms-transform: scale(1.5);
-    -webkit-transform: scale(1.5);
+    box-shadow: 0 0 0 0px #fff inset, 0 0 5px 0 rgba(0, 0, 0, 0.5);
     transform: scale(1.5);
 }
+
+.video-nav-item {
+    width: 100px;
+    height: auto;
+}
+
 
 /* ================================================= */
 /* ---------------- Party Section ------------------ */
