@@ -16,7 +16,7 @@
         scrollingSpeed: 500,
         autoScrolling: true,
         fitToSection: true,
-        navigation: false,
+        navigation: true,
         navigationPosition: 'left',
         paddingTop: '0',
         paddingBottom: '0',
@@ -68,25 +68,55 @@
         allowPageScroll: "vertical"
     });
     
-    //Portfolio modal slider
-    $('.gallery').slick({
-        autoplay: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: '.gallery-nav'
-    });
-    $('.gallery-nav').slick({
-        autoplay: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        asNavFor: '.gallery',
-        arrows: false,
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-    });
+// Portfolio modal slider
+var gallery = $('.gallery');
+var galleryNav = $('.gallery-nav');
+var videoPlaying = false;
+
+function checkAndPauseAutoplay() {
+    // Pause the gallery autoplay if a video is playing
+    if (videoPlaying) {
+        gallery.slick('slickPause');
+    } else {
+        gallery.slick('slickPlay');
+    }
+}
+
+// Initialize Slick sliders
+$('.gallery').slick({
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.gallery-nav',
+});
+
+$('.gallery-nav').slick({
+    autoplay: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.gallery',
+    arrows: false,
+    dots: false,
+    centerMode: true,
+    focusOnSelect: true,
+});
+
+// Pause the gallery autoplay when the video starts playing
+$('.gallery-video').on('play', function() {
+    $('.gallery').slick('slickPause');
+    $('.gallery-nav').slick('slickPause');
+});
+
+// Resume the gallery autoplay when the video is paused or ended
+$('.gallery-video').on('pause ended', function() {
+    $('.gallery').slick('slickPlay');
+    $('.gallery-nav').slick('slickPlay');
+});
+
+
+
     
     // CountDown
     var date = new Date("October 21, 2024 11:55:00"); //Change Date Accordingly
