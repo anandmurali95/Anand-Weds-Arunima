@@ -129,18 +129,36 @@ $('.gallery-video').on('pause ended', function() {
     }); 
 	
 	
-	function updateViewersCount() {
-    let count = localStorage.getItem('viewersCount');
-    if (count === null) {
-        count = 0;
-    }
-    count = parseInt(count) + 1;
-    localStorage.setItem('viewersCount', count);
-    document.getElementById('viewers-count').textContent = 'Website viewers count: ' + count;
-}
+	// Firebase config (replace with your own Firebase project credentials)
+	const firebaseConfig = {
+		apiKey: "your-api-key",
+		authDomain: "your-auth-domain",
+		projectId: "your-project-id",
+		storageBucket: "your-storage-bucket",
+		messagingSenderId: "your-messaging-sender-id",
+		appId: "your-app-id",
+		databaseURL: "your-database-url"
+	};
 
-// Call the function to update the viewers count on page load
-updateViewersCount();
+	// Initialize Firebase
+	const app = firebase.initializeApp(firebaseConfig);
+	const database = firebase.database();
+
+	// Function to update the viewers count in Firebase
+	function updateViewersCount() {
+		const viewersCountRef = firebase.database().ref('viewersCount');
+
+		viewersCountRef.transaction(function(currentCount) {
+			return (currentCount || 0) + 1;
+		});
+
+		viewersCountRef.on('value', (snapshot) => {
+			document.getElementById('viewers-count').textContent = 'Website viewers count: ' + snapshot.val();
+		});
+	}
+
+	// Call the function to update the count
+	updateViewersCount();
 	
 	
 
