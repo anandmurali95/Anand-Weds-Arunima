@@ -1207,7 +1207,6 @@ h6 {
 
 /* Style the viewers section */
 #viewers-section {
-    /*background-color: #f1f1f1;*/
     padding: 10px;
     position: fixed;
     width: 100%;
@@ -1215,9 +1214,7 @@ h6 {
     left: 0;
     display: flex;
     justify-content: flex-end;
-    /*box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a small shadow for separation */
 }
-
 #viewers-count {
     font-size: 1rem;
     color: #333;
